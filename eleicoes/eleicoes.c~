@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(){
+	
+	long long int n = 0, i = 0, r = 0, R = 0, MX = 0;
+	
+	long long int *M = (long long int*) calloc(1000000005, sizeof(long long int));
+	
+	scanf("%lld", &n);
+	
+	scanf("%lld", &r);
+	
+	R = r;
+	MX = ++M[r];
+	
+	for(i = 1; i < n; i++){
+		scanf("%lld", &r);
+		
+		if(++M[r] > MX){
+			R = r;
+			MX = M[r];
+		}
+	}
+	
+	printf("%lld", R);
+
+	return 0;
+}
