@@ -1,5 +1,0 @@
-#include <stdio.h>
-#include <math.h>
-#define for(a,b,c) for(a=b;a<=c;a++)
-#define S scanf("%d",&
-int main(){int i=0,j=0,n=0,K=0,m=0,x=0,M[101][101];S n);while(n--){S K);for(i,1,K)for(j,1,i){S M[i][j]);x=(M[i][j]+=max(M[i-1][j],M[i-1][j-1]));m=max(m,x);}printf("%d\n",m);x=0;}return 0;}
