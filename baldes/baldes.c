@@ -1,35 +1,66 @@
+// Breno Lima de Freitas 408433
+
 #include <stdio.h>
-#include <stdlib.h>
+#define MAX 100001
+
+int M[MAX], w[MAX], S = 0;
+
+void merge(int ini, int meio, int fim){
+	int i = 0, j = 0, k = 0;
+
+	for(i = ini; i < meio; i++)
+		w[k++] = M[i];
+
+	for(i = fim - 1; i >= meio; i--)
+		w[k++] = M[i];
+
+	k--;
+
+	for(i = ini; i < fim; i++){
+		if(w[j] <= w[k])
+			M[i] = w[j++];
+		else{
+			M[i] = w[k--];
+			S += meio - ini - j;
+		}
+	}
+}
+
+void mergesort(int ini, int fim){
+	if(ini >= fim - 1)
+		return;
+
+	int meio = (ini + fim) / 2;
+
+	mergesort(ini, meio);
+	mergesort(meio, fim);
+	merge(ini, meio, fim);
+}
+
 
 int main(){
-	
-	int n = 0, x[100001], i = 0, j = 0, r = 0;
-	
+	int n = 0, i = 0, j = 0;
+
 	while(1){
-	
 		scanf("%d", &n);
-		
-		if(!n)break;
-		
-		for(i=0;i<n;i++)scanf("%d", &x[i]);
-		
-		r = 0;
-		
-		//1 5 3 4 2
-		
-		for(i=n-1;i>0;i--){
-			for(j=0;j<i;j++){
-				if(x[j]>x[j+1]){
-					r++;
-					x[j] = x[j+1]^x[j];
-					x[j+1] = x[j]^x[j+1];
-					x[j] = x[j+1]^x[j];
-				}
-			}
+		getchar();
+
+		if(!n)
+			break;
+
+		for(i = 0; i < n; i++){
+			scanf("%d", &M[i]);
+			getchar();
 		}
-		
-		if(r%2==0)printf("Carlos\n");
-		else printf("Marcelo\n");
+
+		S = 0;
+
+		mergesort(0, n);
+
+		if(S % 2 == 0)
+			printf("Carlos\n");
+		else
+			printf("Marcelo\n");
 	}
 
 	return 0;

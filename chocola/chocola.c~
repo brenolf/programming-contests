@@ -1,34 +1,51 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAX 1001
 
-int n = 0, m = 0, en[1001], em[1001];
+typedef struct {
+	int i, v;
+} Pos;
 
-/*
-int cmp(const void *a, const void *b){
-	return *(int*)b - *(int*)a;
+int n = 0, m = 0, en[MAX], em[MAX], im = 0, in = 0;
+Pos maiorn[MAX], maiorm[MAX];
+
+int soma(int *vet, int i, int size){
+	int ret = 0;
+	for(; i < size; i++)
+		ret += vet[i];
+	return ret;
 }
-*/
 
-int maior(int ini, int fim, int *vet){
-	int i = 0, maior = -1;
-	
-	for(i = ini; i < fim; i++)
-		if(vet[i] > vet[maior] || i == ini)
-			maior = i;
-			
-	return maior;
+int cmp(const void *a, const void *b){
+	return ((Pos*)a)->v - ((Pos*)b)->v;
 }
 
 int quebrar(int iniL, int fimL, int iniC, int fimC){
-	int n = maior(iniL, fimL, en), m = maior(iniC, fimC, em);
 	
-	if(n < 0 && m < 0)
+	if(!in)
+		return soma(em, iniC, fimC);
+	
+	if(!im)
+		return soma(en, iniL, fimL);
+
+	if(!in && !im)
 		return 0;
 	
-	if(n < 0 || (m >= 0 && en[n] < em[m]))
-		return em[m] + quebrar(iniL, fimL, iniC, m) + quebrar(iniL, fimL, m + 1, fimC);
+	Pos n, m;
 	
-	return en[n] + quebrar(iniL, n, iniC, fimC) + quebrar(n + 1, fimL, iniC, fimC);
+	if(in >= 0)
+		n = maiorn[in];
+	
+	if(im >= 0)
+		m = maiorm[im];
+	
+	if(n.v < m.v){
+		im--;
+		return m.v + quebrar(iniL, fimL, iniC, m.i) + quebrar(iniL, fimL, m.i + 1, fimC);
+	}
+	
+	in--;
+	return n.v + quebrar(iniL, n.i, iniC, fimC) + quebrar(n.i + 1, fimL, iniC, fimC);
 }
 
 int main(){
@@ -38,19 +55,30 @@ int main(){
 	scanf("%d\n\n", &T);
 	
 	while(T--){
-		scanf("%d %d", &n, &m);
+		scanf("%d %d", &m, &n);
 		
 		n--;
 		m--;
 		
-		for(i = 0; i < m; i++)
+		for(i = 0; i < m; i++){
 			scanf("%d", &em[i]);
-		
-		for(i = 0; i < n; i++)
+			
+			maiorm[i].i = i;
+			maiorm[i].v = em[i];
+		}
+
+		for(i = 0; i < n; i++){
 			scanf("%d", &en[i]);
+	
+			maiorn[i].i = i;
+			maiorn[i].v = en[i];
+		}
 		
-		//qsort(mm, m, sizeof(int), cmp);
-		//qsort(mn, n, sizeof(int), cmp);
+		in = n - 1;
+		im = m - 1;
+		
+		qsort(maiorm, m, sizeof(Pos), cmp);
+		qsort(maiorn, n, sizeof(Pos), cmp);
 		
 		printf("%d\n", quebrar(0, n, 0, m));
 		

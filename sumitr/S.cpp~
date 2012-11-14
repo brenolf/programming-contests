@@ -1,0 +1,4 @@
+#include<iostream>
+#define for(a,b,c) for(a=b;a<=c;a++)
+using namespace std;
+int main(){int i=0,j=0,n=0,K=0,m=0,M[101][101]={0};cin>>n;while(n--){cin>>K;for(i,1,K)for(j,1,i){cin>>M[i][j];m=max((M[i][j]+=max(M[i-1][j],M[i-1][j-1])),m);}cout<<m<<endl;m=0;}return 0;}

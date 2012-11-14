@@ -1,0 +1,82 @@
+6 10
+tA
+tB
+tC
+td
+tE
+tF
+tA 1 - 1 tB
+tC 0 - 0 td
+tE 0 - 0 tA
+tC 0 - 0 tB
+td 0 - 0 tE
+tA 0 - 0 tC
+tB 0 - 0 tE
+td 0 - 0 tA
+tE 0 - 0 tC
+tB 0 - 0 td
+2 2
+Botafogo
+Flamengo
+Botafogo 3 - 2 Flamengo
+Flamengo 2 - 3 Botafogo
+5 10
+tA
+tB
+tC
+tD
+tE
+tA 0 - 0 tB
+tC 0 - 0 tD
+tE 0 - 0 tA
+tC 0 - 0 tB
+tD 0 - 0 tE
+tA 0 - 0 tC
+tB 0 - 0 tE
+tD 0 - 0 tA
+tE 0 - 0 tC
+tB 0 - 0 tD
+3 2
+Quinze-Novembro
+Flamengo
+Santo-Andre
+Quinze-Novembro 6 - 0 Flamengo
+Flamengo 0 - 2 Santo-Andre
+5 8
+Sao-Paulo
+Sao-Bento
+Ituano
+Palmeiras
+Guarani
+Sao-Paulo 2 - 0 Palmeiras
+Sao-Bento 4 - 1 Guarani
+Palmeiras 1 - 2 Sao-Paulo
+Guarani 1 - 2 Sao-Bento
+Sao-Paulo 1 - 1 Sao-Bento
+Sao-Bento 2 - 1 Sao-Paulo
+Guarani 1 - 1 Palmeiras
+Palmeiras 1 - 1 Guarani
+7 15
+Brasil
+Argentina
+Italia
+Australia
+Alemanha
+Franca
+Espanha
+Brasil 1 - 0 Argentina
+Brasil 1 - 1 Italia
+Brasil 3 - 1 Espanha
+Brasil 4 - 0 Franca
+Brasil 1 - 1 Alemanha
+Argentina 1 - 1 Italia
+Argentina 2 - 2 Espanha
+Argentina 0 - 0 Franca
+Argentina 1 - 1 Alemanha
+Italia 1 - 1 Alemanha
+Italia 1 - 1 Franca
+Italia 1 - 1 Espanha
+Alemanha 1 - 1 Franca
+Alemanha 1 - 1 Espanha
+Franca 2 - 1 Espanha
+0 0

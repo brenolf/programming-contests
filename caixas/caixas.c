@@ -1,9 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
+
+inline int min(int a, int b){
+	return a < b ? a : b;
+}
 
 int main(){
 	
-	int i = 0, n = 0, p = 0, q = 0, a = 0, c = 0, rg = 0, r = 0;
+	int i = 0, j = 0, n = 0, p = 0, fila[1001], read = 0, L = 0, C = 0, topo = 0, esq = 0, dir = 0;
 	
 	while(1){
 		
@@ -11,30 +14,31 @@ int main(){
 		
 		if(!n && !p)break;
 		
-		c = 0;
-		r = 0;
-		
-		while(p--){
-			scanf("%d", &q);
-		
-			rg = 0;
+		for(i = 0; i < p; i++){
+			scanf("%d", &fila[i]);
 			
-			if(!r){
-				for(i=0;i<q;i++){
-					scanf("%d", &a);
-					if(a==1){
-						r = 1;
-						rg = 0;
-					}else rg++;	
+			for(j = 0; j < fila[i]; j++){
+				scanf("%d", &read);
+				getchar();
+				
+				if(read == 1){
+					C = i;
+					L = j + 1;
 				}
-			
-				c += rg;
-			}else{
-				for(i=0;i<q;i++)scanf("%d", &a);
 			}
 		}
 		
-		printf("%d\n", c);
+		topo = fila[C] - L;
+		esq = topo;
+		dir = topo;
+		
+		for(i = C - 1; i >= 0 && fila[i] >= L; i--)
+			esq += fila[i] - L + 1;
+		
+		for(i = C + 1; i < p && fila[i] >= L; i++)
+			dir += fila[i] - L + 1;
+			
+		printf("%d\n", min(dir, esq));
 	}
 
 	return 0;

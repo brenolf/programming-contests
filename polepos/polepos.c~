@@ -1,0 +1,31 @@
+#include <stdio.h>
+#define MAX 1001
+
+typedef struct {
+	int n, gan;
+} Carro;
+
+int main(){
+	
+	int n = 0, i = 0;
+	Carro grid[MAX];
+	
+	
+	while(1){
+		
+		scanf("%d", &n);
+		
+		if(!n)
+			break;
+		
+		for(i = 0; i < n; i++){
+			scanf("%d %d", &c, &p);
+			
+			grid[i].n = c;
+			grid[i].gan = p;
+		}
+		
+	}
+
+	return 0;
+}

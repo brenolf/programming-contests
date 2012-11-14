@@ -11,27 +11,25 @@ int fromLine(int n){
 		m = (e + d) / 2;
 		x = map[n][m]; 
 		
-		if(x == L)
+		if(x == L || e == d)
 			return m;
 		else if(x > L)
 			d = m - 1;
 		else
 			e = m + 1;
 	}
-	
-	return e >= M ? M - 1 : e;
 }
 
 int fromDiag(int fromCol){
-	int e[] = {0, fromCol}, d[] = {M - 1 - fromCol, M - 1}, m[] = {0, 0}, x = 0;
+	int e[] = {0, fromCol}, d[] = {N - 1 - fromCol, M - 1}, m[] = {0, 0}, x = 0;
 	
-	while(e[1] <= d[1]){
+	while(e[0] <= d[0] && e[1] <= d[1]){
 		m[0] = (e[0] + d[0]) / 2;
 		m[1] = (e[1] + d[1]) / 2;
 		
-		x = map[m[0]][m[1]]; 
+		x = map[m[0]][m[1]];
 		
-		if(x == U)
+		if(x == U || (e[0] == d[0] && e[1] == d[1]))
 			return m[1];
 		else if(x > U){
 			d[0] = m[0] - 1;
@@ -41,8 +39,6 @@ int fromDiag(int fromCol){
 			e[1] = m[1] + 1;
 		}
 	}
-	
-	return e[1] >= M ? M - 1 : e[1];
 }
 
 int checkDiagonal(){
@@ -53,9 +49,8 @@ int checkDiagonal(){
 	for(; i < N && N - i > D; i++){
 		
 		colFrom = fromLine(i);
-		colTo = fromDiag(colFrom);
 		
-		printf("<%d %d>\n", colFrom, colTo);
+		colTo = fromDiag(colFrom);
 		
 		R = colTo - colFrom;
 		

@@ -3,24 +3,31 @@
 
 int n = 0, m = 0, en[1001], em[1001];
 
-/*
-int cmp(const void *a, const void *b){
-	return *(int*)b - *(int*)a;
-}
-*/
-
 int maior(int ini, int fim, int *vet){
 	int i = 0, maior = -1;
 	
 	for(i = ini; i < fim; i++)
-		if(vet[i] > vet[maior] || i == ini)
+		if(i == ini || vet[i] > vet[maior])
 			maior = i;
 			
 	return maior;
 }
 
+int soma(int *vet, int i, int size){
+	int ret = 0;
+	for(; i < size; i++)
+		ret += vet[i];
+	return ret;
+}
+
 int quebrar(int iniL, int fimL, int iniC, int fimC){
 	int n = maior(iniL, fimL, en), m = maior(iniC, fimC, em);
+	
+	if(n < 0)
+		return soma(em, iniC, fimC);
+	
+	if(m < 0)
+		return soma(en, iniL, fimL);
 	
 	if(n < 0 && m < 0)
 		return 0;
@@ -38,7 +45,7 @@ int main(){
 	scanf("%d\n\n", &T);
 	
 	while(T--){
-		scanf("%d %d", &n, &m);
+		scanf("%d %d", &m, &n);
 		
 		n--;
 		m--;
