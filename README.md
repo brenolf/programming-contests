@@ -15,6 +15,6 @@ You may freely use these codes. Nevertheless, bear in mind that the most importa
 Here are the sites from where I have taken the problems:
 
 1. [Spoj Brasil](http://br.spoj.com/)
-2. [Shere Online Judge](http://www.spoj.com/)
+2. [Sphere Online Judge](http://www.spoj.com/)
 3. [URI Online Judge](http://www.urionlinejudge.com.br/)
 4. [UVA Online Judge](http://uva.onlinejudge.org/)
