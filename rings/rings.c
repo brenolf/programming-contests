@@ -1,3 +1,5 @@
+// UVA Rings and Glue
+
 #include <stdio.h>
 #include <math.h>
 
@@ -11,12 +13,12 @@ Circle p, q;
 int G[101][101], n = 0;
 int vis[101];
 
-inline void edge(int v, int u){
+void edge(int v, int u){
 	G[u][v] = 1;
 	G[v][u] = 1;
 }
 
-inline int max(int a, int b){
+int max(int a, int b){
 	return a > b ? a : b;
 }
 
@@ -33,8 +35,8 @@ int dfs(int v){
 
 int main(){
 
-	int i, j, maior = 0;
-	double dist, R;
+	int i, j, maior = 0, v;
+	double dist, c_maior, c_menor, R;
 
 	while(1){
 		scanf("%d", &n);
@@ -61,21 +63,22 @@ int main(){
 
 					dist = sqrt((q.x - p.x) * (q.x - p.x) + (q.y - p.y) * (q.y - p.y));
 					R = p.r + q.r;
+					c_maior = p.r > q.r ? p.r : q.r;
+					c_menor = p.r < q.r ? p.r : q.r;
 
-					if(dist <= R)
+					if(dist < R && dist + c_menor > c_maior)
 						edge(i, j);
 				}
 			}
 		}
 
-		maior = -1;
+		maior = 0;
 
-		for(i = 0; i < n; i++)
-			if(!vis[i])
-				maior = max(dfs(i), maior);
+		for(v = 0; v < n; v++)
+			if(!vis[v])
+				maior = max(maior, dfs(v));
 
-		printf("The largest component contains %d ring%s.", maior, (maior > 1 ? "s" : ""));
-		printf("\n");
+		printf("The largest component contains %d ring%s.\n", maior, (maior == 1 ? "" : "s"));
 	}
 
 	return 0;
