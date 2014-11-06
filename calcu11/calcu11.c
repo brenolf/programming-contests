@@ -1,49 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int pr[] = {2, 3, 5, 7}, bucket[] = {0, 0, 0, 0};
 
-inline void getPrimo(int n, char s){
-	int i = 0;
-	
-	for(i = 0; i < 4; i++){
-		while(n % pr[i] == 0){
-			n /= pr[i];
-		
-			if(s == '*')
-				bucket[i]++;
-			else
-				bucket[i]--;
-		}
-	}
-}
 
-inline int power(int n, int p){
-	int i = 0;
-	long r = 1;
-	
-	for(i = 0; i < p; i++)
-		r *= n;
-	
-	return r;
-}
-
-int main(){
+int main(int argc, char*argv[]){
 	
 	int i = 0, n = 0, r = 0, resp = 1;
 	char op;
+	long double rr = 1;
 
 	scanf("%d", &n);
 	
 	for(i = 0; i < n; i++){
 		scanf("%d %c", &r, &op);
-		getPrimo(r, op);
+		//getPrimo(r, op);
+		if (op == '*')
+			rr *= r;
+		else
+			rr /= r;
 	}
 
-	for(i = 0; i < 4; i++)
-		resp *= power(pr[i], bucket[i]);
-	
-	printf("%d\n", resp);
+	//for(i = 0; i < 4; i++)
+	//	resp *= power(pr[i], bucket[i]);
+
+	printf("%d\n", (int) rr);
 
 	return 0;
 }
