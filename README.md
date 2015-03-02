@@ -1,18 +1,14 @@
 Programming Problems
 ====================
 
-Here are some of my codes used to solve mostly online judges problems. I have been working on them since I started my BSc degree. 
+Here are some of my codes I used to solve (mostly) online judges problems. Not all of them actually do solve the problem, but definitely most do. I have been working on them since I started my BSc degree in Computer Science. 
 
-Perhaps there are more other programs here not directly related to programming contests, however I also find them interesting.
-
-Another important thing to point out is that not all of them solve the problem, but most do.
+Perhaps you may find other programs not directly related to programming contests; However, they are there because I also find them somehow interesting.
 
 Usage
 =====
 
-You may freely use these codes. Nevertheless, bear in mind that the most important in these problems are the logic behind.
-
-Here are the sites from where I have taken the problems:
+You may freely use/copy/share these codes. Nevertheless, bear in mind that the most important is the logic behind each problem.
 
 1. [Spoj Brasil](http://br.spoj.com/)
 2. [Sphere Online Judge](http://www.spoj.com/)
